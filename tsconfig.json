@@ -7,6 +7,7 @@
             ]
         }
     },
+    "module":"esnext",
     "include": [
         "src/**/*.ts",
         "src/**/*.d.ts",

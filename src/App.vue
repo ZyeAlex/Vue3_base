@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-
-document.documentElement.setAttribute('data-theme', 'white')
 </script>
 
 <template>
