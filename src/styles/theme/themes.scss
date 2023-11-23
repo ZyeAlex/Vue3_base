@@ -1,10 +1,14 @@
 $themes: (
     light: (
         bgColor: #fff,
-        textColor: #000
+        textColor: #000,
+        iconColor: #0ed,
+        bgImg: #fff,
     ),
     dark: (
         bgColor: #000,
-        textColor: #fff
+        textColor: #fff,
+        iconColor: #ccc,
+        bgImg: url('@/assets/images/bg/bg-bark.jpg') no-repeat 100% 100%,
     )
 )
