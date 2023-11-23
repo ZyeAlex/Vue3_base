@@ -24,7 +24,7 @@ const sex = [
     <v-form v-model="form">
         <v-form-item label="姓名" prop="name" maxlength="5" />
         <v-form-item label="年龄" prop="age" type="number" :max="90" />
-        <v-form-item label="性别" prop="sex" type="select" :option="sex"></v-form-item>
+        <v-form-item label="性别" prop="sex" type="select"></v-form-item>
         <v-form-item label="信息" prop="message" type="textarea" />
     </v-form>
     <el-button @click="() => console.log(form)">111</el-button>
