@@ -2,7 +2,7 @@
 import { reactive } from 'vue'
 
 const form = reactive({
-    name: 'cy',
+    name: 'XXX',
     age: 80,
     sex: [],
     message: '你好，世界！'
