@@ -23,8 +23,8 @@ const sex = [
     <v-form v-model="form">
         <v-form-item label="姓名" prop="name" />
         <v-form-item label="年龄" prop="age" type="number" />
-        <v-form-item label="性别" prop="sex" type="select" option=""></v-form-item>
-        <v-form-item label="信息" prop="message" />
+        <v-form-item label="性别" prop="sex" type="select" :option="sex"></v-form-item>
+        <v-form-item label="信息" prop="message" type="textarea"/>
     </v-form>
 </template>
 
