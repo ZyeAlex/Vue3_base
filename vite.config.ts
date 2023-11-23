@@ -31,7 +31,10 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import '@/styles/theme/index.scss';`
+          // 引入全局变量文件
+          // additionalData: `
+          //   @import '@/styles/index.scss';
+          // `
         }
       }
     },

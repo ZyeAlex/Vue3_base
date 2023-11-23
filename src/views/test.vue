@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="text">
         你好，世界
     </div>
 </template>
