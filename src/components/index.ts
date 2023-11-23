@@ -1,7 +1,9 @@
 import type { App } from 'vue'
 import EchartsAxis from './echarts/axis/index.vue'
-import EchartsResource from './echarts/resource.vue'
+import Pagination from './element/pagination.vue'
+import PaginationNative from './element/pagination-native.vue'
 export const setupGlobComponent = (app: App<Element>): void => {
   app.component('EchartsAxis', EchartsAxis)
-  // app.component('EchartsResource', EchartsResource)
+  app.component('Pagination', Pagination)
+  app.component('PaginationNative', PaginationNative)
 }

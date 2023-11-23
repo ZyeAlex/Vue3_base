@@ -11,12 +11,12 @@ import { nextTick } from 'vue'
 import { ECharts } from 'echarts'
 import useStore from '@/store'
 import { Num, TinyColor } from '@/utils'
-const store = useStore()
 type o = {
   [key: string]: any
 }
 
 export default function (props: any) {
+  const store = useStore()
   // 实例
   let myChart: ECharts
   // 初始化
@@ -306,7 +306,7 @@ export default function (props: any) {
     return propsXAxis.data?.length
   }
   //默认展示最后10条
-  
+
   /** 将源对象的子项合并至目标对象
    *
    * @param to 基础对象、目标对象

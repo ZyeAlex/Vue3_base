@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { computed, ref, nextTick } from 'vue'
-import Pagination from './Pagination.vue'
+import Pagination from './pagination.vue'
 // DOM节点
 const pageRef = ref()
 const pageSize = ref(15)
@@ -78,29 +78,43 @@ defineExpose({
     </div>
     <div class="page">
       <slot name="footerLeft"></slot>
-      <Pagination :init="false" style="padding-top: 10px" @change="change" :layout="layout" :sizes="sizes" ref="pageRef" />
+      <Pagination :init="false" style="padding-top: 10px" @change="change" :layout="layout" :sizes="sizes"
+        ref="pageRef" />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .native {
-  @include column;
+  display: flex;
+  flex-direction: column;
+
   .content {
     flex: 1;
+
     .content-in {
-      @include max;
+      width: 100%;
+      height: 100%;
     }
   }
+
   &.relative {
-    @include max;
+    width: 100%;
+    height: 100%;
   }
+
   .content.relative {
-    @include relative(max);
+    position: relative;
+    &>*{
+      position: absolute;
+      height:100%;
+      width: 100%;
+    }
   }
+
   .page {
-    @include row(flex-end);
+    display: flex;
+    justify-content: flex-end;
     height: 40px;
   }
-}
-</style>
+}</style>

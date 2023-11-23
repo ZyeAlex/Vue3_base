@@ -1,7 +1,8 @@
 
 
-
+export { default as TinyColor } from './modules/tinyColor'
 export { default as Carrier } from './modules/carrier'
+export * from './modules/debounce&throttle'
 // export * from './modules/file'
 export * from './modules/fullscreen'
 export * from './modules/json'

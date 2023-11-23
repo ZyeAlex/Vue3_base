@@ -100,15 +100,17 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .axis {
-  @include max;
-  @include relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
 
   .echart {
-    @include max;
+    width: 100%;
+    height: 100%;
   }
 
   :deep(.btn) {
-    @include absolute;
+    position: absolute;
     cursor: pointer;
     top: 50%;
     transform: translateY(-50%);
