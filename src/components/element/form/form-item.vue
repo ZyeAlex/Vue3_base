@@ -24,15 +24,19 @@ const model = inject('model')
 </script>
 
 <template>
+    <!-- 文本输入框 -->
     <el-form-item v-if="type == 'text'" v-bind="$props">
         <el-input v-model="model[prop]" type="text" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
+    <!-- 数字输入框 -->
     <el-form-item v-if="type == 'number'" v-bind="$props">
         <el-input v-model.number="model[prop]" type="number" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
+    <!-- 富文本输入框 -->
     <el-form-item v-if="type == 'textarea'" v-bind="$props">
         <el-input v-model="model[prop]" type="textarea" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
+    <!-- 下拉框 -->
     <el-form-item v-if="type == 'select'" v-bind="$props">
         <el-select v-model="model[prop]" style="width: 100%;" v-bind="$attrs">
             <el-option v-if="option && option.length" v-for="item in option" :key="item.value" :label="item.label"
