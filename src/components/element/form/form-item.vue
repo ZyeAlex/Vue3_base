@@ -1,10 +1,14 @@
 <script setup lang="ts">
+defineProps<{
+    prop: string
+}>()
+import { inject } from 'vue'
+const model = inject('model')
 </script>
 
 <template>
     <el-form-item>
-        <el-input />
-        你好，世界
+        <el-input v-model="model[prop]" />
     </el-form-item>
 </template>
 
