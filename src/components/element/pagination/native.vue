@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { computed, ref, nextTick } from 'vue'
-import Pagination from './pagination.vue'
+import Pagination from './index.vue'
 // DOM节点
 const pageRef = ref()
 const pageSize = ref(15)

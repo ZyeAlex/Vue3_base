@@ -1,11 +1,10 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-    <v-form>
-        <v-form-item></v-form-item>
-    </v-form>
+    <el-form>
+        <slot></slot>
+    </el-form>
 </template>
 
 <style lang="scss" scoped></style>
