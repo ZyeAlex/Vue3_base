@@ -1,7 +1,10 @@
 <script setup lang="ts">
-defineProps<{
-    prop: string
-}>()
+const props = withDefaults(
+    defineProps<{
+        prop: string
+    }>()
+    , {}
+)
 import { inject } from 'vue'
 const model = inject('model')
 </script>

@@ -4,7 +4,8 @@ import { ref, provide } from 'vue'
 const props = withDefaults(
     defineProps<{
         modelValue: any
-    }>(), {}
+    }>(),
+    {}
 )
 const form = ref()
 
