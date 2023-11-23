@@ -5,7 +5,7 @@ const form = reactive({
     name: 'fsk',
     age: 18,
     sex: 0,
-    font:['sing','jump','rap','basketball'],
+    font: ['sing', 'jump', 'rap', 'basketball'],
     message: '你好，世界！'
 })
 const sex = [
@@ -36,13 +36,19 @@ const font = [
         value: 'basketball'
     },
 ]
+const rules = reactive({
+    name: [
+        { required: true, message: '格式错误', trigger: 'blur' },
+        { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'change' },
+    ],
+})
 
 </script>
 
 <template>
     <div class="test">
-        <v-form v-model="form">
-            <v-form-item label="姓名" prop="name" maxlength="5" />
+        <v-form v-model="form" :rules="rules">
+            <v-form-item label="姓名" prop="name" maxlength="7" />
             <v-form-item label="年龄" prop="age" type="number" :max="90" />
             <v-form-item label="性别" prop="sex" type="select" :option="sex"></v-form-item>
             <v-form-item label="爱好" prop="font" type="select" :option="font" multiple></v-form-item>
