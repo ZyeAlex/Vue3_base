@@ -10,6 +10,7 @@ const model = inject('model')
     <el-form-item>
         <el-input v-model="model[prop]" />
     </el-form-item>
+
 </template>
 
 <style lang="scss" scoped></style>
