@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
+import test from '@/components/element/form/test.vue'
 </script>
 
 <template>
-    123
+    <test />
 </template>
 
 
