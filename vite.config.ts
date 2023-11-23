@@ -32,9 +32,10 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           // 引入全局变量文件
-          // additionalData: `
-          //   @import '@/styles/index.scss';
-          // `
+          additionalData: `
+            // @import '@/styles/index.scss';
+            @import '@/styles/theme/index.scss';
+          `
         }
       }
     },
