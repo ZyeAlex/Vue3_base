@@ -8,7 +8,8 @@ const form = reactive({
     font: ['sing', 'jump', 'rap', 'basketball'],
     message: '你好，世界！',
     onOff: true,
-    skill: []
+    skill: [],
+    radio: 'sing'
 
 })
 const sex = [
@@ -22,6 +23,18 @@ const sex = [
     }
 ]
 const skills = [
+    {
+        label: '游泳',
+        value: 'swimming'
+    }, {
+        label: '唱歌',
+        value: 'sing'
+    }, {
+        label: '跳舞',
+        value: 'dance'
+    },
+]
+const radios = [
     {
         label: '游泳',
         value: 'swimming'
@@ -54,7 +67,7 @@ const font = [
 const rules = reactive({
     name: [
         { required: true, message: '格式错误', trigger: 'change' },
-        { min: 4, max: 5, message: 'Length should be 3 to 5', trigger: 'change' },
+        { min: 4, max: 5, message: 'Length should be 4 to 5', trigger: 'change' },
     ],
 })
 const submit = async () => {
@@ -66,13 +79,14 @@ const submit = async () => {
 
 <template>
     <div class="test">
-        <c-form ref="formRef" v-model="form" :rules="rules">
-            <c-form-item label="姓名" prop="name" maxlength="7" />
-            <c-form-item label="年龄" prop="age" type="number" />
+        <c-form ref="formRef" v-model="form" :rules="rules" :col="3">
+            <c-form-item label="姓名" prop="name" maxlength="7" :col="2" />
+            <c-form-item label="年龄" prop="age" type="number" :col="1" />
             <c-form-item label="性别" prop="sex" type="select" :option="sex"></c-form-item>
             <c-form-item label="爱好" prop="font" type="select" :option="font" multiple></c-form-item>
             <c-form-item label="开关" prop="onOff" type="switch" />
             <c-form-item label="技能" prop="skill" type="checkbox" :option="skills" />
+            <c-form-item label="最擅长" prop="radio" type="radio" :option="radios" />
             <c-form-item label="信息" prop="message" type="textarea" />
         </c-form>
         <el-button @click="submit">提交</el-button>
