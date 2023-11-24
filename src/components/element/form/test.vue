@@ -80,9 +80,8 @@ const submit = async () => {
 <template>
     <div class="test">
         <c-form ref="formRef" v-model="form" :rules="rules" :col="3">
-
-            <c-form-item label="姓名" prop="name" maxlength="7" :col="3 * 0.75" />
-            <c-form-item label="年龄" prop="age" type="number" :col="3 * 0.25" />
+            <c-form-item label="姓名" prop="name" maxlength="7" :col="2" />
+            <c-form-item label="年龄" prop="age" type="number" :col="1" />
             <c-form-item label="性别" prop="sex" type="select" :option="sex"></c-form-item>
             <c-form-item label="爱好" prop="font" type="select" :option="font" multiple></c-form-item>
             <c-form-item label="开关" prop="onOff" type="switch" />
