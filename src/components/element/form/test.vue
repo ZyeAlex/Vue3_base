@@ -39,7 +39,7 @@ const font = [
 const rules = reactive({
     name: [
         { required: true, message: '格式错误', trigger: 'change' },
-        { min: 4, max: 5, message: 'Length should be 3 to 5', trigger: 'change' },
+        { min: 4, max: 5, message: 'Length should be 4 to 5', trigger: 'change' },
     ],
 })
 const submit = async () => {

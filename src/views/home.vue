@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Theme from '@/components/theme/theme.vue'
 import FormTest from '@/components/element/form/test.vue'
-import PaginationTest from '@/components/element/pagination/test.vue'
+import AxisTest from '@/components/echarts/axis/test.vue'
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import PaginationTest from '@/components/element/pagination/test.vue'
         hover-color="var(--el-color-info)" />
     <div class="text p-1 m-1 ml-3 px-4"></div>
     <form-test />
-    <pagination-test />
+    <axis-test />
 </template>
 
 

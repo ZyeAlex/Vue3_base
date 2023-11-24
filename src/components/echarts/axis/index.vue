@@ -1,5 +1,5 @@
 <!--
- * @Description: 柱状图与折线图 (用来代替Echarts-axis)
+ * @Description: 柱状图与折线图
  * @Author: Zye
  * @Date: 2023-03-25
  * @LastEditors: Zye
@@ -57,7 +57,7 @@ const props = withDefaults(
   }>(),
   {
     series: () => [],
-    color: "#fff",
+    color: "#000",
     left: "8%",
     top: "10%",
     right: 0,
