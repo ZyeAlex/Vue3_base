@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-
+import { reactive, ref } from 'vue'
+const formRef = ref()
 const form = reactive({
-    name: 'fsk',
+    name: 'cxk',
     age: 18,
     sex: 0,
     font: ['sing', 'jump', 'rap', 'basketball'],
@@ -38,23 +38,27 @@ const font = [
 ]
 const rules = reactive({
     name: [
-        { required: true, message: '格式错误', trigger: 'blur' },
-        { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'change' },
+        { required: true, message: '格式错误', trigger: 'change' },
+        { min: 4, max: 5, message: 'Length should be 3 to 5', trigger: 'change' },
     ],
 })
-
+const submit = async () => {
+    // 表单校验
+    await formRef.value.validate()
+    console.log(form)
+}
 </script>
 
 <template>
     <div class="test">
-        <c-form v-model="form" :rules="rules">
+        <c-form ref="formRef" v-model="form" :rules="rules">
             <c-form-item label="姓名" prop="name" maxlength="7" />
-            <c-form-item label="年龄" prop="age" type="number" :max="90" />
+            <c-form-item label="年龄" prop="age" type="number" />
             <c-form-item label="性别" prop="sex" type="select" :option="sex"></c-form-item>
             <c-form-item label="爱好" prop="font" type="select" :option="font" multiple></c-form-item>
             <c-form-item label="信息" prop="message" type="textarea" />
         </c-form>
-        <el-button @click="() => console.log(form)">提交</el-button>
+        <el-button @click="submit">提交</el-button>
     </div>
 </template>
 

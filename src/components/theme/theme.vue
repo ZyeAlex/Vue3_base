@@ -24,8 +24,9 @@ onMounted(() => {
 <template>
     <div class="check-theme">
         <el-radio-group v-model="theme" @change="themeChangeHandle">
-            <el-radio-button :label="theme.value" v-for="theme in themes" :key="theme.value">{{ theme.label
-            }}</el-radio-button>
+            <el-radio-button :label="theme.value" v-for="theme in themes" :key="theme.value">
+                {{ theme.label }}
+            </el-radio-button>
         </el-radio-group>
     </div>
 </template>

@@ -96,19 +96,8 @@ function change(isReset = true) {
 }
 </script>
 <template>
-  <el-pagination
-    small
-    :background="background"
-    :pager-conut="pagerConut"
-    :layout="layout.join(',')"
-    :total="total"
-    :current-page="pageNum"
-    :page-size="pageSize"
-    :page-sizes="sizes"
-    @size-change="sizeChange"
-    @current-change="numberChange"
-    v-show="autoHidden ? total : true"
-    style="padding: 10px 0 0 0"
-  >
+  <el-pagination small :background="background" :pager-conut="pagerConut" :layout="layout.join(',')" :total="total"
+    :current-page="pageNum" :page-size="pageSize" :page-sizes="sizes" @size-change="sizeChange"
+    @current-change="numberChange" v-show="autoHidden ? total : true" style="padding: 10px 0 0 0">
   </el-pagination>
 </template>
