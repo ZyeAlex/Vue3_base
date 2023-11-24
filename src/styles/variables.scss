@@ -1,0 +1,40 @@
+// 生成padding margin 预处理class
+$param: (
+    p: 'padding',
+    m: 'margin',
+);
+
+@each $key, $value in $param {
+    @for $i from 0 through 15 {
+        .#{$key}-#{$i} {
+            #{$value}: $i * 1rem;
+        }
+
+        .#{$key}x-#{$i} {
+            #{$value}-left: $i * 1rem;
+            #{$value}-right: $i * 1rem;
+        }
+
+        .#{$key}y-#{$i} {
+            #{$value}-top: $i * 1rem;
+            #{$value}-bottom: $i * 1rem;
+        }
+
+        .#{$key}l-#{$i} {
+            #{$value}-left: $i * 1rem;
+        }
+
+        .#{$key}r-#{$i} {
+            #{$value}-right: $i * 1rem;
+        }
+
+        .#{$key}t-#{$i} {
+            #{$value}-top: $i * 1rem;
+        }
+
+        .#{$key}b-#{$i} {
+            #{$value}-bottom: $i * 1rem;
+        }
+    }
+}
+
