@@ -46,6 +46,7 @@ export default defineConfig(({ mode }) => {
           // 引入全局变量文件
           additionalData: `
             @import '@/styles/theme/index.scss';
+            @import '@/styles/variables.scss';
           `
         }
       }
