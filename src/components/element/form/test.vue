@@ -6,7 +6,10 @@ const form = reactive({
     age: 18,
     sex: 0,
     font: ['sing', 'jump', 'rap', 'basketball'],
-    message: '你好，世界！'
+    message: '你好，世界！',
+    onOff: true,
+    skill: []
+
 })
 const sex = [
     {
@@ -17,6 +20,18 @@ const sex = [
         label: '女',
         value: 0
     }
+]
+const skills = [
+    {
+        label: '游泳',
+        value: 'swimming'
+    }, {
+        label: '唱歌',
+        value: 'sing'
+    }, {
+        label: '跳舞',
+        value: 'dance'
+    },
 ]
 const font = [
     {
@@ -56,6 +71,8 @@ const submit = async () => {
             <c-form-item label="年龄" prop="age" type="number" />
             <c-form-item label="性别" prop="sex" type="select" :option="sex"></c-form-item>
             <c-form-item label="爱好" prop="font" type="select" :option="font" multiple></c-form-item>
+            <c-form-item label="开关" prop="onOff" type="switch" />
+            <c-form-item label="技能" prop="skill" type="checkbox" :option="skills" />
             <c-form-item label="信息" prop="message" type="textarea" />
         </c-form>
         <el-button @click="submit">提交</el-button>

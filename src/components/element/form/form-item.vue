@@ -17,6 +17,8 @@ withDefaults(defineProps<{
     placeholder: '请输入',
     required: false,
     rules: {},
+    showMessage: true,
+    labelWidth: '',
     option: () => [],
     showMessage: true,
     inlineMessage: '',
@@ -47,6 +49,15 @@ const model = inject('model')
             </el-option>
             <slot></slot>
         </el-select>
+    </el-form-item>
+    <!-- 开关 -->
+    <el-form-item v-if="type == 'switch'" v-bind="$props">
+        <el-switch v-model="model[prop]" v-bind="$attrs" :name="model[prop]" />
+    </el-form-item>
+    <el-form-item v-if="type == 'checkbox'" v-bind="$props">
+        <el-checkbox-group v-model="model[prop]" v-bind="$attrs">
+            <el-checkbox v-for="item in option" :key="item.value" :label="item.label" :name="item.value" />
+        </el-checkbox-group>
     </el-form-item>
 </template>
 
