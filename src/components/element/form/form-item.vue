@@ -7,7 +7,7 @@ withDefaults(defineProps<{
     placeholder?: string
     option?: any[]
     required?: boolean
-    error?: string
+    // error?: string
     showMessage?: boolean
     inlineMessage?: string | boolean
     size?: 'large' | 'default' | 'small'
@@ -18,6 +18,9 @@ withDefaults(defineProps<{
     required: false,
     rules: {},
     option: () => [],
+    showMessage: true,
+    inlineMessage: '',
+    labelWidth: ''
 })
 import { inject } from 'vue'
 const model = inject('model')

@@ -2,7 +2,7 @@
 import { reactive } from 'vue'
 
 const form = reactive({
-    name: 'fsk',
+    name: 'cxk',
     age: 18,
     sex: 0,
     font: ['sing', 'jump', 'rap', 'basketball'],
@@ -38,8 +38,8 @@ const font = [
 ]
 const rules = reactive({
     name: [
-        { required: true, message: '格式错误', trigger: 'blur' },
-        { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'change' },
+        { required: true, message: '格式错误', trigger: 'change' },
+        { min: 4, max: 5, message: 'Length should be 3 to 5', trigger: 'change' },
     ],
 })
 
@@ -49,7 +49,7 @@ const rules = reactive({
     <div class="test">
         <v-form v-model="form" :rules="rules">
             <v-form-item label="姓名" prop="name" maxlength="7" />
-            <v-form-item label="年龄" prop="age" type="number" :max="90" />
+            <v-form-item label="年龄" prop="age" type="number" />
             <v-form-item label="性别" prop="sex" type="select" :option="sex"></v-form-item>
             <v-form-item label="爱好" prop="font" type="select" :option="font" multiple></v-form-item>
             <v-form-item label="信息" prop="message" type="textarea" />
