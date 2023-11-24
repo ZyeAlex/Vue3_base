@@ -8,7 +8,7 @@ export const useThemeStore = defineStore('theme', () => {
         window.document.documentElement.setAttribute('data-theme', theme.value);
     }
     const initTheme = () => {
-        window.document.documentElement.setAttribute('data-theme', (import.meta?.env?.VITE_IS_THEME || 'light'));
+        window.document.documentElement.setAttribute('data-theme', (import.meta?.env?.VITE_IS_THEME));
     }
 
     return { theme, setTheme, initTheme }

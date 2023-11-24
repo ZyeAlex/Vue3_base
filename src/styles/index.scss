@@ -4,20 +4,24 @@
     }
 }
 
-html,body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
     overflow: hidden;
 }
+
 *,
 *:before,
 *:after {
     box-sizing: inherit;
 }
+
 * {
     box-sizing: border-box;
 }
+
 div:focus {
     outline: none;
 }
@@ -25,6 +29,22 @@ div:focus {
 a:focus,
 a:active {
     outline: none;
+}
+
+.clearfix {
+    &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+}
+
+// 鼠标样式
+.pointer {
+    cursor: pointer;
 }
 
 a:focus,
@@ -38,6 +58,7 @@ a:hover {
 #app {
     width: 100vw;
     height: 100vh;
+
     @include useTheme {
         background-color: getVar(bgColor);
         background-size: 100% 100%;

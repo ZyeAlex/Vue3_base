@@ -3,8 +3,8 @@ $curTheme: 'dark';
 
 @mixin useTheme() {
     @each $key, $value in $themes {
+        $curTheme: $key !global;
         html[data-theme='#{$key}'] & {
-            $curTheme: $key !global;
             @content;
         }
     }
