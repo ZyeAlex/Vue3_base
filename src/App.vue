@@ -8,5 +8,12 @@ import { RouterView } from 'vue-router';
 
 
 <style lang="scss" scoped>
+.text {
+  width: 100px;
+  height: 100px;
+  @include useTheme {
+    border: 1px solid getVar(textColor);
+  }
+}
 
 </style>

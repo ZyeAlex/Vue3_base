@@ -1,11 +1,18 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv, UserConfigExport, Plugin } from 'vite'
+import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
+  const root = process.cwd()
+  function pathResolve(dir: string) {
+    return resolve(root, '.', dir)
+  }
   // 根据env配置解析代理http地址
   const http = (urlName: string, protocol = 'http', url = '', port = env['VITE_PORT_' + urlName]) => {
     if (env.VITE_PORT) {
@@ -22,6 +29,11 @@ export default defineConfig(({ mode }) => {
   const config: UserConfigExport = {
     plugins: [
       vue(),
+      createSvgIconsPlugin({
+        iconDirs: [pathResolve('src/assets/svgs')],
+        symbolId: 'icon-[dir]-[name]',
+        svgoOptions: true
+      })
     ],
     resolve: {
       alias: {
@@ -33,7 +45,6 @@ export default defineConfig(({ mode }) => {
         scss: {
           // 引入全局变量文件
           additionalData: `
-            // @import '@/styles/index.scss';
             @import '@/styles/theme/index.scss';
           `
         }

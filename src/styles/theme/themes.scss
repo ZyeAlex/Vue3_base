@@ -1,10 +1,12 @@
 $themes: (
     light: (
         bgColor: #fff,
-        textColor: #000
+        textColor: #000,
+        iconColor: #0ed,
     ),
     dark: (
         bgColor: #000,
-        textColor: #fff
+        textColor: #fff,
+        iconColor: #ccc,
     )
 )

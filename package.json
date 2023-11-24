@@ -7,7 +7,6 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@iconify/vue": "^4.1.1",
     "axios": "^1.6.2",
     "echarts": "^5.4.3",
     "element-plus": "^2.4.2",
@@ -17,6 +16,8 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.1.1",
+    "@purge-icons/generated": "^0.10.0",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
@@ -26,6 +27,7 @@
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.11",
     "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^1.8.19"
   }
 }

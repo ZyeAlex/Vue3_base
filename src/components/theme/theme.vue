@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useThemeStore } from '@/store/theme';
+import { useThemeStore } from '@/store/theme.ts';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
-
-const { theme } = storeToRefs(useThemeStore());
+const themeStore = useThemeStore()
+const { theme } = storeToRefs(themeStore);
 const themes = [
     {
         label: '亮黑',
@@ -13,12 +13,11 @@ const themes = [
         value: 'light',
     }
 ]
-const themeChangeHandle = (val: any) => {
-    theme.value = val
-    window.document.documentElement.setAttribute('data-theme', val);
+const themeChangeHandle = (val: string) => {
+    themeStore.setTheme(val)
 }
 onMounted(() => {
-    window.document.documentElement.setAttribute('data-theme', 'light');
+    themeStore.initTheme();
 })
 </script>
 
