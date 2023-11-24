@@ -1,0 +1,18 @@
+// 文本颜色
+@mixin textColor($params) {
+    @include useTheme{  
+        color: getVar($params)
+    }
+}
+
+// 背景颜色或图片
+@mixin background($params) {
+    @include useTheme{
+        background: getVar($params);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+}
+
+
+
