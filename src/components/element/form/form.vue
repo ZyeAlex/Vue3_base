@@ -4,10 +4,14 @@ import { ref, provide } from 'vue'
 const props = withDefaults(
     defineProps<{
         modelValue: any
-        col?: number
+        col?: number | string
+        inline?: boolean
+        padding?: string
     }>(),
     {
-        col: 2
+        col: 1,
+        inline: false,
+        padding: '10px'
     }
 )
 const form = ref()
@@ -18,17 +22,15 @@ defineExpose({
 })
 
 // 注入数据
-provide('model', props.modelValue)
-provide('cols', props.col)
-
+provide('props', props)
 </script>
 
 <template>
-    <el-form ref="form" :model="modelValue">
-        <el-row>
-            <slot></slot>
-        </el-row>
+    <el-form ref="form" :model="modelValue" inline>
+
+        <slot></slot>
+
     </el-form>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" ></style>

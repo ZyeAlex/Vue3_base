@@ -42,11 +42,11 @@ export function JSONString(params: any, _space = 4, _first_level = true): string
     let keys = Object.keys(params)
     if (!keys.length) return '{},'
     return removeTail(
-      `{
+      `<div contenteditable>{</div>
       <div contenteditable style="display:flex">
         <div contenteditable>${'&nbsp'.repeat(_space)}</div><div contenteditable>
           ${removeTail(
-        keys.reduce((s, key) => s + '<div contenteditable>' + key + ':&nbsp;' + JSONString(params[key], _space, false) + '</div>', ''),
+        keys.reduce((s, key) => s + '<div contenteditable>' + '"' + key + '"' + ':&nbsp;' + JSONString(params[key], _space, false) + '</div>', ''),
         true
       )}
         </div>
@@ -64,8 +64,8 @@ export function JSONString(params: any, _space = 4, _first_level = true): string
 function removeTail(str: string, transform?: boolean) {
   if (!transform) return str
   let arr = str.split(',')
-  console.log(arr.slice(0, -1).join(',') + arr[arr.length - 1])
   return arr.slice(0, -1).join(',') + arr[arr.length - 1]
 }
+
 
 
