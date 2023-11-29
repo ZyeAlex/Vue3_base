@@ -55,7 +55,7 @@ const submit = async () => {
 
 <template>
     <div class="test">
-        <c-form ref="formRef" v-model="form" :rules="rules" col="3">
+        <c-form ref="formRef" v-model="form" :rules="rules" col="3" inline>
             <!-- col : 占用列数 -->
             <c-form-item label="姓名" prop="name" maxlength="7" col="2" />
             <c-form-item label="年龄" prop="age" type="number"  />
