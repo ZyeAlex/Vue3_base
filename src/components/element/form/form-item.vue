@@ -22,7 +22,7 @@ const props =
     }>(), {
         type: 'text',
         placeholder: '请输入',
-        required: false,
+        required: undefined,
         rules: {},
         showMessage: true,
         labelWidth: '',
@@ -52,15 +52,19 @@ const style = computed(() => {
 </script>
 
 <template>
+    <!-- 输入框 -->
     <el-form-item v-bind="$props" v-if="type == 'text'" :style="style">
         <el-input v-model="fatherProps.modelValue[prop]" type="text" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
+    <!-- 数字框 -->
     <el-form-item v-bind="$props" v-if="type == 'number'" :style="style">
         <el-input v-model.number="fatherProps.modelValue[prop]" type="number" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
+    <!-- 富文本 -->
     <el-form-item v-bind="$props" v-if="type == 'textarea'" :style="style">
         <el-input v-model="fatherProps.modelValue[prop]" type="textarea" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
+    <!-- 下拉选择框 -->
     <el-form-item v-bind="$props" v-if="type == 'select'" :style="style">
         <el-select v-model="fatherProps.modelValue[prop]" style="width: 100%;" v-bind="$attrs" clearable>
             <el-option v-if="option && option.length" v-for="item in option" :key="item[optionValue]"
@@ -69,6 +73,7 @@ const style = computed(() => {
             <slot></slot>
         </el-select>
     </el-form-item>
+    <!-- 下拉多选框 -->
     <el-form-item v-bind="$props" v-if="type == 'selects'" :style="style">
         <el-select v-model="fatherProps.modelValue[prop]" style="width: 100%;" v-bind="$attrs" multiple clearable
             collapse-tags>
@@ -78,15 +83,18 @@ const style = computed(() => {
             <slot></slot>
         </el-select>
     </el-form-item>
+    <!-- 开关 -->
     <el-form-item v-bind="$props" v-if="type == 'switch'" :style="style">
         <el-switch v-model="fatherProps.modelValue[prop]" v-bind="$attrs" :name="fatherProps.modelValue[prop]" />
     </el-form-item>
+    <!-- 多选框 -->
     <el-form-item v-bind="$props" v-if="type == 'checkbox'" :style="style">
         <el-checkbox-group v-model="fatherProps.modelValue[prop]" v-bind="$attrs">
             <el-checkbox v-for="item in option" :key="item[optionValue]" :label="item[optionLabel]"
                 :name="item[optionValue]" />
         </el-checkbox-group>
     </el-form-item>
+    <!-- 开关 -->
     <el-form-item v-bind="$props" v-if="type == 'radio'" :style="style">
         <el-radio-group v-model="fatherProps.modelValue[prop]" v-bind="$attrs">
             <el-radio v-for="item in option" :key="item[optionValue]" :label="item[optionLabel]" />
