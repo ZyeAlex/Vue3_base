@@ -1,3 +1,4 @@
+@import './mixin.scss';
 // 生成padding margin 预处理class
 $pm-map: (
     p: 'padding',
@@ -15,31 +16,30 @@ $tblr-map: (
 * padding margin l r t b x y 0 - 15 
 * <div class='pr-2 mx-4'></div>
 */
+$pm-size: 0.25rem;
 @each $key, $value in $pm-map {
     @for $i from 0 through 15 {
         .#{$key}-#{$i} {
-            #{$value}: $i * 1rem;
+            #{$value}: $i * $pm-size;
         }
 
         @each $tblr-key, $tblr-value in $tblr-map {
             .#{$key}#{$tblr-key}-#{$i} {
-                #{$value}-#{$tblr-value}: $i * 1rem;
+                #{$value}-#{$tblr-value}: $i * $pm-size;
             }
         }
 
         .#{$key}x-#{$i} {
-            #{$value}-left: $i * 1rem;
-            #{$value}-right: $i * 1rem;
+            #{$value}-left: $i * $pm-size;
+            #{$value}-right: $i * $pm-size;
         }
 
         .#{$key}y-#{$i} {
-            #{$value}-top: $i * 1rem;
-            #{$value}-bottom: $i * 1rem;
+            #{$value}-top: $i * $pm-size;
+            #{$value}-bottom: $i * $pm-size;
         }
     }
-}
-
-;
+};
 
 /**
 * border l r t b 0 - 15 
@@ -55,11 +55,91 @@ $tblr-map: (
             }
         }
     }
-
     .b-#{$i} {
         @include useTheme {
             border: $i * 1px solid getVar(borderColor);
         }
     }
-
 }
+// 浮动布局
+@each $key, $value in $tblr-map {
+    .f#{$key} {
+        float: $value
+    }
+}
+
+// 文本溢出
+@for $i from 1 through 3 {
+    .ellipsis-#{$i} {
+        @include ellipsis($i);
+    }
+}
+
+// flex布局
+$flex-map: (
+    frc: (
+        flex-direction: row,
+        justify-content: center,
+    ),
+    frb: (
+        flex-direction: row,
+        justify-content: space-between,
+    ),
+    fre: (
+        flex-direction: row,
+        justify-content: space-evenly,
+    ),
+    fcc: (   
+        flex-direction: column,
+        justify-content: center,
+    ),
+    fcb: (
+        flex-direction: column,
+        justify-content: space-between,
+    ),
+    fce: (
+        flex-direction: column,
+        justify-content: space-evenly,
+    ) 
+);
+
+@each $flex-key, $felx-item in $flex-map {
+    .#{$flex-key} {
+        display: flex;
+        align-items: center;
+        @each $key, $item in $felx-item {
+            #{$key}: $item;
+        }
+    }
+};
+
+// position 布局
+.absolute {
+    @include absolute(max);
+};
+
+.relative {
+    @include relative(max);
+};
+
+.fixed {
+    @include position(fixed)
+}
+
+.sticky {
+    @include position(sticky)
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
+
+
+

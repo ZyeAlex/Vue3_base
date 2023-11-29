@@ -1,14 +1,15 @@
 $themes: (
-    light: (
+    light: ( // 亮主题
         bgColor: #fff,
         textColor: #000,
         iconColor: #0ed,
-        borderColor: #e5e5e5
+        borderColor: #000
     ),
-    dark: (
+    dark: ( // 暗主题
         bgColor: #000,
         textColor: #fff,
         iconColor: #ccc,
         borderColor: #0078ff,
     )
+     // ... 其他主题色 颜色变量名 同上
 )
