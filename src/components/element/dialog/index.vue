@@ -8,8 +8,12 @@
 import { ref, useSlots } from 'vue'
 const props = withDefaults(defineProps<{
     title?: string
+    closeOnClickModal: boolean
+    destroyOnClose: boolean
 }>(), {
-    title: '标题'
+    title: '标题',
+    closeOnClickModal: false,
+    destroyOnClose: true
 })
 // dialogRef
 const dialogRef = ref()
@@ -33,18 +37,19 @@ const slots = useSlots()
 </script>
 
 <template>
-    <el-dialog ref="dialogRef" v-model="dialogShow">
+    <el-dialog ref="dialogRef" v-model="dialogShow" :close-on-click-modal="closeOnClickModal"
+        :destroy-on-close="destroyOnClose">
         <!-- 标题 -->
         <template #title>
-            <slot name="title">{{ title }}</slot>
+            <slot name="title" :close="close">{{ title }}</slot>
         </template>
         <!-- 内容 -->
         <template #default>
-            <slot name="default"></slot>
+            <slot name="default" :close="close"></slot>
         </template>
         <!-- 尾部 -->
         <template #footer v-if="slots.footer">
-            <slot name="footer"></slot>
+            <slot name="footer" :close="close"></slot>
         </template>
     </el-dialog>
 </template>

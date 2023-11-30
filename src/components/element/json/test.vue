@@ -6,7 +6,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import json from './index.vue'
 const jsonRef = ref()
 const msg = {
     name: 'fsk',
@@ -28,6 +27,6 @@ const getJSON = () => {
 </script>
 
 <template>
-    <json ref="jsonRef" :data="msg" />
+    <c-json ref="jsonRef" :data="msg" />
     <el-button @click="getJSON">获取JSON</el-button>
 </template>
