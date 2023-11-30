@@ -68,7 +68,7 @@ const rules = reactive({
 </script>
 
 <template>
-    <c-table :data="people" :rules="rules">
+    <c-table :data="people" :rules="rules" >
         <c-table-column type="index" />
         <!-- 表单 -->
         <c-table-column label="名字" prop="name" form-type="text"></c-table-column>

@@ -9,11 +9,11 @@ import TableTest from '@/components/element/table/test.vue'
 </script>
 
 <template>
-    <!-- <theme></theme> -->
+    <theme></theme>
     <!-- <DialogTest /> -->
     <!-- <json-test /> -->
     <!-- <axis-test /> -->
-    <!-- <form-test /> -->
+    <form-test />
     <TableTest />
 </template>
 

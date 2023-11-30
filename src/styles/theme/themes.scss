@@ -3,13 +3,17 @@ $themes: (
         bgColor: #fff,
         textColor: #000,
         iconColor: #0ed,
-        borderColor: #000
+        borderColor: #c0c4cc,
+        inputBgColor:  #fff,
+        inputTextColor: #606266,
     ),
     dark: ( // 暗主题
-        bgColor: #000,
+        bgColor: #181818,
         textColor: #fff,
         iconColor: #ccc,
-        borderColor: #0078ff,
+        borderColor: #4c4d4f,
+        inputBgColor: #434343,
+        inputTextColor: #cfd3dc,
     )
      // ... 其他主题色 颜色变量名 同上
 )
