@@ -17,6 +17,7 @@ $tblr-map: (
 * <div class='pr-2 mx-4'></div>
 */
 $pm-size: 0.25rem;
+
 @each $key, $value in $pm-map {
     @for $i from 0 through 15 {
         .#{$key}-#{$i} {
@@ -39,7 +40,9 @@ $pm-size: 0.25rem;
             #{$value}-bottom: $i * $pm-size;
         }
     }
-};
+}
+
+
 
 /**
 * border l r t b 0 - 15 
@@ -55,12 +58,14 @@ $pm-size: 0.25rem;
             }
         }
     }
+
     .b-#{$i} {
         @include useTheme {
             border: $i * 1px solid getVar(borderColor);
         }
     }
 }
+
 // 浮动布局
 @each $key, $value in $tblr-map {
     .f#{$key} {
@@ -77,69 +82,149 @@ $pm-size: 0.25rem;
 
 // flex布局
 $flex-map: (
-    frc: (
-        flex-direction: row,
+    frc: (flex-direction: row,
         justify-content: center,
     ),
-    frb: (
-        flex-direction: row,
+    frb: (flex-direction: row,
         justify-content: space-between,
     ),
-    fre: (
-        flex-direction: row,
+    fre: (flex-direction: row,
         justify-content: space-evenly,
     ),
-    fcc: (   
-        flex-direction: column,
+    fcc: (flex-direction: column,
         justify-content: center,
     ),
-    fcb: (
-        flex-direction: column,
+    fcb: (flex-direction: column,
         justify-content: space-between,
     ),
-    fce: (
-        flex-direction: column,
+    fce: (flex-direction: column,
         justify-content: space-evenly,
-    ) 
+    )
 );
 
 @each $flex-key, $felx-item in $flex-map {
     .#{$flex-key} {
         display: flex;
         align-items: center;
+
         @each $key, $item in $felx-item {
             #{$key}: $item;
         }
     }
-};
-
-// position 布局
-.absolute {
-    @include absolute(max);
-};
-
-.relative {
-    @include relative(max);
-};
-
-.fixed {
-    @include position(fixed)
 }
 
-.sticky {
-    @include position(sticky)
+$justify-map: (
+    center: center,
+    start: flex-start,
+    end: flex-end,
+    between: space-between,
+    around: space-around,
+    evenly: space-evenly,
+    stretch: stretch,
+);
+
+.flex {
+    display: flex;
 }
+
+@each $justify-key, $justify-item in $justify-map {
+    @if $justify-key != stretch {
+        .justify-#{$justify-key} {
+            justify-content: $justify-item;
+        }
+    }
+    @if $justify-key != evenly {
+        .align-#{$justify-key} {
+            align-content: $justify-item;
+        }
+    }
+}
+
+$align-map: (
+    center: center,
+    start: flex-start,
+    end: flex-end,
+);
+
+@each $align-key, $align-item in $align-map {
+    .align-#{$align-key} {
+        align-items: $align-item;
+    }
+}
+
+// position 布局  
+$position-map: absolute, relative, fixed, sticky;
+
+@each $position in $position-map {
+    .#{$position} {
+        position: $position;
+    }
+}
+
+
 
 .full {
     width: 100%;
     height: 100%;
 }
+
+
 .w-full {
     width: 100%;
 }
+
+
 .h-full {
     height: 100%;
 }
 
 
+/**
+* 文字样式
+*/
+$font-map: (
+    super: 20px,
+    large: 18px,
+    middle: 16px,
+    small: 14px,
+    mini: 12px,
+);
+$font-weight-map: 100, 200, 300, 400, 500, 600, 700, 800, 900, bold, bolder, lighter;
 
+/*
+    <span class="font-super">test</span>
+*/
+@each $font-key, $font-value in $font-map {
+    .font-#{$font-key} {
+        font-size: $font-value;
+    }
+}
+
+/*
+    <span class="font-50">test</span>
+*/
+@for $i from 12 through 76 {
+    .font-#{$i} {
+        font-size: $i * 1px;
+    }
+}
+
+/*
+    <span class="font-50 font-weight-400">test</span>
+    <span class="font-50 font-weight-bold">test</span>
+*/
+@each $font-weight-item in $font-weight-map {
+    .font-#{$font-weight-item} {
+        font-weight: $font-weight-item;
+    }
+}
+
+/**
+    <span class="opacity-1">test</span>
+ 
+*/
+@for $i from 1 through 10 {
+    .opacity-#{$i} {
+        opacity: $i * 0.1;
+    }
+}

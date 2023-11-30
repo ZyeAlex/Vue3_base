@@ -12,7 +12,7 @@ export const useThemeStore = defineStore('theme', () => {
     }
      // 初始化主题
     const initTheme = () => {
-        window.document.documentElement.setAttribute('data-theme', (import.meta?.env?.VITE_IS_THEME));
+        window.document.documentElement.setAttribute('data-theme', 'light');
     }
 
     return { theme, setTheme, initTheme }
