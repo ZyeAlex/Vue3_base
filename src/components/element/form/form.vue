@@ -3,32 +3,37 @@ import { ref, provide } from 'vue'
 // 属性
 const props = withDefaults(
     defineProps<{
-        modelValue: any
-        col?: number
+        model: any
+        col?: number | string
+        inline?: boolean
+        padding?: string
     }>(),
     {
-        col: 2
+        col: 1,
+        inline: false,
+        padding: '10px'
     }
 )
 const form = ref()
 
-// 表格事件
+// 表单事件
 defineExpose({
     validate: (...args: any[]) => form.value.validate(...args)
 })
 
 // 注入数据
-provide('model', props.modelValue)
-provide('cols', props.col)
-
+provide('model', props.model)
+provide('col', props.col)
+provide('inline', props.inline)
+provide('padding', props.padding)
 </script>
 
 <template>
-    <el-form ref="form" :model="modelValue">
-        <el-row>
-            <slot></slot>
-        </el-row>
+    <el-form ref="form" inline :model="model">
+
+        <slot></slot>
+
     </el-form>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" ></style>

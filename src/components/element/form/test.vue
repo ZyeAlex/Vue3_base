@@ -22,30 +22,6 @@ const sex = [
         value: 0
     }
 ]
-const skills = [
-    {
-        label: '游泳',
-        value: 'swimming'
-    }, {
-        label: '唱歌',
-        value: 'sing'
-    }, {
-        label: '跳舞',
-        value: 'dance'
-    },
-]
-const radios = [
-    {
-        label: '游泳',
-        value: 'swimming'
-    }, {
-        label: '唱歌',
-        value: 'sing'
-    }, {
-        label: '跳舞',
-        value: 'dance'
-    },
-]
 const font = [
     {
         label: 'sing',
@@ -73,20 +49,21 @@ const rules = reactive({
 const submit = async () => {
     // 表单校验
     await formRef.value.validate()
-    console.log(form)
 }
 </script>
 
 <template>
     <div class="test">
-        <c-form ref="formRef" v-model="form" :rules="rules" :col="3">
-            <c-form-item label="姓名" prop="name" maxlength="7" :col="2" />
-            <c-form-item label="年龄" prop="age" type="number" :col="1" />
-            <c-form-item label="性别" prop="sex" type="select" :option="sex"></c-form-item>
-            <c-form-item label="爱好" prop="font" type="select" :option="font" multiple></c-form-item>
-            <c-form-item label="开关" prop="onOff" type="switch" />
-            <c-form-item label="技能" prop="skill" type="checkbox" :option="skills" />
-            <c-form-item label="最擅长" prop="radio" type="radio" :option="radios" />
+        <c-form ref="formRef" :model="form" :rules="rules" col="3" inline>
+            <!-- col : 占用列数 -->
+            <c-form-item label="姓名" prop="name" maxlength="7" col="2" />
+            <c-form-item label="年龄" prop="age" type="number" />
+            <!-- 百分比设置布局 -->
+            <c-form-item label="性别" prop="sex" type="select" :option="sex" width="70%"></c-form-item>
+            <c-form-item label="爱好" prop="font" type="selects" :option="font" width="100%"></c-form-item>
+            <c-form-item label="技能" prop="skill" type="checkbox" :option="font" />
+            <c-form-item label="开关" prop="onOff" type="switch" width="30%" />
+            <c-form-item label="最擅长" prop="radio" type="radio" :option="font" />
             <c-form-item label="信息" prop="message" type="textarea" />
         </c-form>
         <el-button @click="submit">提交</el-button>

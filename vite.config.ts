@@ -6,7 +6,6 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
-
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   const root = process.cwd()
@@ -50,7 +49,7 @@ export default defineConfig(({ mode }) => {
             @import '@/styles/element/index.scss';
           `
         }
-      }
+      },
     },
     server: {
       https: false,

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const http = axios.create({
-    timeout: 1000 * 60 * 5
+    timeout: 1000 * 60 * 5,
 })
 
 // 请求
