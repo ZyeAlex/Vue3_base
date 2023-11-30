@@ -3,7 +3,7 @@ import { ref, provide } from 'vue'
 // 属性
 const props = withDefaults(
     defineProps<{
-        modelValue: any
+        model: any
         col?: number | string
         inline?: boolean
         padding?: string
@@ -16,17 +16,20 @@ const props = withDefaults(
 )
 const form = ref()
 
-// 表格事件
+// 表单事件
 defineExpose({
     validate: (...args: any[]) => form.value.validate(...args)
 })
 
 // 注入数据
-provide('props', props)
+provide('model', props.model)
+provide('col', props.col)
+provide('inline', props.inline)
+provide('padding', props.padding)
 </script>
 
 <template>
-    <el-form ref="form" :model="modelValue" inline>
+    <el-form ref="form" inline :model="model">
 
         <slot></slot>
 
