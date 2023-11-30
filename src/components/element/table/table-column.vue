@@ -68,24 +68,17 @@ const rules = inject<any>('rules')
 </script>
 
 <template>
-    <el-table-column v-if="formType" v-bind="$props">
+    <el-table-column v-bind="$props">
         <!-- input -->
-        <template #default="{ row, $index }">
+        <template #default="{ row, $index }" v-if="formType">
             <FormItem :prop="'list.' + $index + '.' + prop" :rules="props.rules || rules[prop]" v-bind="$attrs"
                 :type="formType" :option="option" :option-label="optionLabel" :option-value="optionValue">
             </FormItem>
         </template>
-    </el-table-column>
-
-    <el-table-column v-else-if="type == 'select'" v-bind="$props">
         <!-- 字典展示 -->
-        <template #default="{ row }">
+        <template #default="{ row }" v-else-if="type == 'select'">
             {{ getObject(option, optionValue, row[prop], optionLabel) }}
         </template>
-    </el-table-column>
-
-    <el-table-column v-else v-bind="$props">
-        <!-- 默认 -->
     </el-table-column>
 </template>
 

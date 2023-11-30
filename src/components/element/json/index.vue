@@ -31,16 +31,16 @@ defineExpose({
 const keydown = (e: KeyboardEvent) => {
     if (e.key == 'Tab') {
         e.preventDefault()
-        const selection = window.getSelection()
-        var event = new KeyboardEvent('keydown', {
-            key: ' ',
-            code: 'Space',
-            charCode: 32,
-            keyCode: 32,
-            view: window,
-            bubbles: true,
-        });
-        selection.anchorNode.dispatchEvent(event);
+        // const selection = window.getSelection()
+        // var event = new KeyboardEvent('keydown', {
+        //     key: ' ',
+        //     code: 'Space',
+        //     charCode: 32,
+        //     keyCode: 32,
+        //     view: window,
+        //     bubbles: true,
+        // });
+        // selection.anchorNode.dispatchEvent(event);
     }
 }
 </script>

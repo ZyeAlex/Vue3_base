@@ -10,11 +10,11 @@ import TableTest from '@/components/element/table/test.vue'
 
 <template>
     <!-- <theme></theme> -->
-    <!-- <DialogTest /> -->
+    <!-- <gialog-test /> -->
     <!-- <json-test /> -->
     <!-- <axis-test /> -->
     <form-test />
-    <TableTest />
+    <table-test />
 </template>
 
 

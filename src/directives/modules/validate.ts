@@ -242,7 +242,6 @@ export default {
     });
     app.directive('required', {
       mounted(dom: Element, binding: DirectiveBinding, vnode: VNode) {
-        console.log('vnode.ref', vnode.ref);
         // 设置rules
         (vnode.ref as any).i.props.rules = new Rules()
           .required()
@@ -253,7 +252,6 @@ export default {
         setRequiredStyle(dom);
       },
       // updated(dom: Element, binding: DirectiveBinding, vnode: VNode) {
-      //   console.log('vnode.ref', vnode.ref);
       //   // 设置rules
       //   (vnode.ref as any).i.props.rules = new Rules()
       //     .required()
