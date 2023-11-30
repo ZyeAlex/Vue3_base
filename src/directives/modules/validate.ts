@@ -1,11 +1,17 @@
 import type { FormItemRule } from 'element-plus';
 import type { App, DirectiveBinding, VNode } from 'vue';
 
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    rule: () => Rules;
+  }
+}
+
 const VALIDATE = {
   required: '必填',
   enter: '请输入',
-  select: '请选择'
-}
+  select: '请选择',
+};
 const TYPELIST = {
   string: '字符串',
   number: '数字',
@@ -18,8 +24,8 @@ const TYPELIST = {
   date: '日期格式',
   url: '网址格式',
   hex: '16进制数字',
-  email: '电子邮箱格式'
-}
+  email: '电子邮箱格式',
+};
 const DEFAULTMSG = {
   required: '请输入${this.labelV}',
   type: '${this.labelV}必须为${TYPELIST[typeVal]}格式',
@@ -32,8 +38,8 @@ const DEFAULTMSG = {
   number: '必须为数值型',
   range: '值必须在${min}-${max}之间',
   maxv: '最大值为${max}',
-  minv: '最小值为${min}'
-}
+  minv: '最小值为${min}',
+};
 
 declare type RuleType =
   | 'string'
@@ -232,7 +238,6 @@ export default {
     app.config.globalProperties.rule = () => new Rules();
     app.directive('validate', {
       mounted(dom: Element, binding: DirectiveBinding, vnode: VNode) {
-
         // 设置rules
         (vnode.ref as any).i.props.rules = binding.value.label((vnode.ref as any).i.props.label).getValue();
 
@@ -264,4 +269,3 @@ export default {
     });
   },
 };
-
