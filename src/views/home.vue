@@ -8,9 +8,12 @@ import IconTest from '@/components/icon/test.vue'
 <template>
     <theme></theme>
     <form-test />
-    <div class="text p-1 m-1 ml-3 px-4 b-3 ellipsis-3 frc"></div>
+    <div class="text p-1 m-1 ml-3 px-4 b-3 ellipsis-3 frc">
+        <span class="font-super">test</span>
+        <span class="font-24 font-weight-600">test</span>
+    </div>
     <icon-test></icon-test>
-    <axis-test /> 
+    <axis-test />
 </template>
 
 

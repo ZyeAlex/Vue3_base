@@ -47,6 +47,7 @@ export default defineConfig(({ mode }) => {
           additionalData: `
             @import '@/styles/theme/index.scss';
             @import '@/styles/variables.scss';
+            @import '@/styles/element/index.scss';
           `
         }
       }
