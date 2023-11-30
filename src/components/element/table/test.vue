@@ -69,7 +69,7 @@ const rules = reactive({
 
 <template>
     <c-table :data="people" :rules="rules">
-        <c-table-column type="index"/>
+        <c-table-column type="index" />
         <!-- 表单 -->
         <c-table-column label="名字" prop="name" form-type="text"></c-table-column>
         <c-table-column label="年龄" prop="age" form-type="text"></c-table-column>
@@ -78,6 +78,7 @@ const rules = reactive({
         <!-- 字典解析 -->
         <c-table-column label="公司" prop="company" type="select" :option="company"></c-table-column>
     </c-table>
+    <el-button>获取数据</el-button>
 </template>
 
 <style lang='scss' scoped>

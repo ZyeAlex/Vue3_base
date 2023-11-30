@@ -29,11 +29,17 @@ watch(() => props.data, () => {
     immediate: true,
     deep: true
 })
+const getData = () => {
+    return data.value.list
+}
+
 provide('rules', props.rules)
 
 
 // 表格事件
 defineExpose({
+    // 获取数据
+    getData,
     // form
     validate: (...args: any[]) => form.value.validate(...args),
     // table

@@ -1,4 +1,4 @@
-
+import './modules/px2rem'
 
 export { default as TinyColor } from './modules/tinyColor'
 export { default as Carrier } from './modules/carrier'
