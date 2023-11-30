@@ -35,7 +35,7 @@ const props =
         required: undefined,
         rules: undefined,
         showMessage: true,
-        labelWidth: '',
+        labelWidth: undefined,
 
         option: () => [],
         optionLabel: 'label',
@@ -68,7 +68,7 @@ const style = computed(() => {
 
 // 用来处理  model 为  model:{list:[{xxx},{xxx}]}  prop 为  list.0.xxx 的情况
 const model = inject('model')
-const keys = Array.isArray(props.prop) ? props.prop : props.prop.split('.')
+const keys = Array.isArray(props.prop) ? props.prop : props.prop?.split('.')
 const getModel = computed(() => {
     let nextModel = model
     for (let i = 0; i < keys.length - 1; i++) {
@@ -83,20 +83,20 @@ const getKey = computed(() => {
 </script>
 
 <template>
-    <!-- 输入框 -->
-    <el-form-item v-bind="$props" v-if="type == 'text'" :style="style">
+    <el-form-item v-bind="$props" :style="style" v-if="type == 'text'">
+        <!-- 输入框 -->
         <el-input v-model="getModel[getKey]" type="text" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
-    <!-- 数字框 -->
     <el-form-item v-bind="$props" v-else-if="type == 'number'" :style="style">
+        <!-- 数字框 -->
         <el-input v-model.number="getModel[getKey]" type="number" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
-    <!-- 富文本 -->
     <el-form-item v-bind="$props" v-else-if="type == 'textarea'" :style="style">
+        <!-- 富文本 -->
         <el-input v-model="getModel[getKey]" type="textarea" :placeholder="placeholder" v-bind="$attrs" />
     </el-form-item>
-    <!-- 下拉选择框 -->
     <el-form-item v-bind="$props" v-else-if="type == 'select'" :style="style">
+        <!-- 下拉选择框 -->
         <el-select v-model="getModel[getKey]" style="width: 100%;" v-bind="$attrs" clearable>
             <el-option v-if="option && option.length" v-for="item in option" :key="item[optionValue]"
                 :label="item[optionLabel]" :value="item[optionValue]">
@@ -104,8 +104,8 @@ const getKey = computed(() => {
             <slot></slot>
         </el-select>
     </el-form-item>
-    <!-- 选择器——单选 -->
     <el-form-item v-bind="$props" v-else-if="type == 'selects'" :style="style">
+        <!-- 选择器——单选 -->
         <el-select v-model="getModel[getKey]" style="width: 100%;" v-bind="$attrs" multiple clearable>
             <el-option v-if="option && option.length" v-for="item in option" :key="item[optionValue]"
                 :label="item[optionLabel]" :value="item[optionValue]">
@@ -113,29 +113,25 @@ const getKey = computed(() => {
             <slot></slot>
         </el-select>
     </el-form-item>
-
-    <!-- 选择器——多选 -->
     <el-form-item v-bind="$props" v-else-if="type == 'checkbox'" :style="style">
+        <!-- 选择器——多选 -->
         <el-checkbox-group v-model="getModel[getKey]" v-bind="$attrs">
             <el-checkbox v-for="item in option" :key="item[optionValue]" :label="item[optionLabel]"
                 :name="item[optionValue]" />
         </el-checkbox-group>
     </el-form-item>
-
-    <!-- 开关 -->
     <el-form-item v-bind="$props" v-else-if="type == 'switch'" :style="style">
+        <!-- 开关 -->
         <el-switch v-model="getModel[getKey]" v-bind="$attrs" />
     </el-form-item>
-
-    <!-- 单选框 -->
     <el-form-item v-bind="$props" v-else-if="type == 'radio'" :style="style">
+        <!-- 单选框 -->
         <el-radio-group v-model="getModel[getKey]" v-bind="$attrs">
             <el-radio v-for="item in option" :key="item[optionValue]" :label="item[optionLabel]" />
         </el-radio-group>
     </el-form-item>
-
-    <!-- 原生 -->
     <el-form-item v-bind="$props" v-else-if="type == 'default'" :style="style">
+        <!-- 原生 -->
         <slot></slot>
     </el-form-item>
 </template>

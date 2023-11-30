@@ -57,7 +57,7 @@ const submit = async () => {
         <c-form ref="formRef" :model="form" :rules="rules" col="3" inline>
             <!-- col : 占用列数 -->
             <c-form-item label="姓名" prop="name" maxlength="7" col="2" />
-            <c-form-item label="年龄" prop="age" type="number" />
+            <c-form-item label="年龄" prop="age" type="number" v-required />
             <!-- 百分比设置布局 -->
             <c-form-item label="性别" prop="sex" type="select" :option="sex" width="70%"></c-form-item>
             <c-form-item label="爱好" prop="font" type="selects" :option="font" width="100%"></c-form-item>

@@ -1,8 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { setupGlobComponent } from '@/components'
+import components from '@/components'
 import App from './App.vue'
 import router from './router'
+import directives from './directives'
 // svg-icon
 import 'virtual:svg-icons-register'
 import '@purge-icons/generated'
@@ -14,9 +15,11 @@ import '@/styles/index.scss'
 const app = createApp(App)
 // pinia 
 app.use(createPinia())
-// router
+// 路由
 app.use(router)
-// component
-setupGlobComponent(app)
+// 自定义组件
+app.use(components)
+// 自定义指令
+app.use(directives)
 // mount
 app.mount('#app')

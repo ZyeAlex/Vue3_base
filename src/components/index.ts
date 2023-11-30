@@ -9,18 +9,22 @@ import Json from './element/json/index.vue'
 import Dialog from './element/dialog/index.vue'
 import Table from './element/table/table.vue'
 import TableColumn from './element/table/table-column.vue'
-export const setupGlobComponent = (app: App<Element>): void => {
+const setupGlobComponent = (app: App<Element>): void => {
   app.component('CAxis', Axis)
   app.component('CPagination', Pagination)
   app.component('CPaginationNative', PaginationNative)
 
   app.component('CForm', Form)
   app.component('CFormItem', FormItem)
-  
+
   app.component('CTable', Table)
   app.component('CTableColumn', TableColumn)
 
   app.component('CIcon', Icon)
   app.component('CJson', Json)
   app.component('CDialog', Dialog)
+}
+
+export default {
+  install: setupGlobComponent
 }

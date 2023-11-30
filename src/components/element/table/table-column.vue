@@ -26,7 +26,7 @@ const props = withDefaults(
         label?: string
         index?: string
         columnKey?: string
-        prop: string
+        prop?: string
         width?: string
         minWidth?: string
         fixed?: true | 'left' | 'right'
@@ -68,8 +68,8 @@ const rules = inject<any>('rules')
 </script>
 
 <template>
-    <!-- input -->
     <el-table-column v-if="formType" v-bind="$props">
+        <!-- input -->
         <template #default="{ row, $index }">
             <FormItem :prop="'list.' + $index + '.' + prop" :rules="props.rules || rules[prop]" v-bind="$attrs"
                 :type="formType" :option="option" :option-label="optionLabel" :option-value="optionValue">
@@ -77,15 +77,15 @@ const rules = inject<any>('rules')
         </template>
     </el-table-column>
 
-    <!-- 字典展示 -->
     <el-table-column v-else-if="type == 'select'" v-bind="$props">
+        <!-- 字典展示 -->
         <template #default="{ row }">
             {{ getObject(option, optionValue, row[prop], optionLabel) }}
         </template>
     </el-table-column>
 
-    <!-- 默认 -->
     <el-table-column v-else v-bind="$props">
+        <!-- 默认 -->
     </el-table-column>
 </template>
 

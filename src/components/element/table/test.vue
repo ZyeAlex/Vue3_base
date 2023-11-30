@@ -72,7 +72,7 @@ const rules = reactive({
         <c-table-column type="index" />
         <!-- 表单 -->
         <c-table-column label="名字" prop="name" form-type="text"></c-table-column>
-        <c-table-column label="年龄" prop="age" form-type="text"></c-table-column>
+        <c-table-column label="年龄" prop="age" form-type="text" ></c-table-column>
         <c-table-column label="性别" prop="sex" form-type="select" :option="sex"></c-table-column>
         <c-table-column label="爱好" prop="font" form-type="selects" :option="font" width="200px"></c-table-column>
         <!-- 字典解析 -->

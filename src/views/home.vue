@@ -17,7 +17,7 @@ import TableTest from '@/components/element/table/test.vue'
     <!-- <DialogTest /> -->
     <!-- <json-test /> -->
     <!-- <axis-test /> -->
-    <!-- <form-test /> -->
+    <form-test />
     <TableTest />
 </template>
 
