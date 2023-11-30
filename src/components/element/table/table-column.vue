@@ -45,10 +45,10 @@ const props = withDefaults(
         selectable?: Function
         reserveSelection?: boolean
         filters?: Array<{ text: string, value: string }>,
-        filterPlacement?:string
-        filterMultiple?:boolean
-        filterMethod?:Function
-        filteredValue?:any[]
+        filterPlacement?: string
+        filterMultiple?: boolean
+        filterMethod?: Function
+        filteredValue?: any[]
     }>(),
     {
         label: '',
@@ -60,7 +60,7 @@ const props = withDefaults(
         showOverflowTooltip: undefined,
         align: 'left',
         headerAlign: undefined,
-        filterMultiple:true
+        filterMultiple: true
     }
 )
 
@@ -71,8 +71,8 @@ const rules = inject<any>('rules')
     <!-- input -->
     <el-table-column v-if="formType" v-bind="$props">
         <template #default="{ row, $index }">
-            <FormItem :prop="'list.' + $index + '.' + prop" v-model="row[prop]"  :rules="props.rules || rules[prop]"
-                v-bind="$attrs" :type="formType" :option="option" :option-label="optionLabel" :option-value="optionValue">
+            <FormItem :prop="'list.' + $index + '.' + prop" :rules="props.rules || rules[prop]" v-bind="$attrs"
+                :type="formType" :option="option" :option-label="optionLabel" :option-value="optionValue">
             </FormItem>
         </template>
     </el-table-column>
