@@ -9,11 +9,7 @@ import TableTest from '@/components/element/table/test.vue'
 </script>
 
 <template>
-    <theme></theme>
-    <CIcon icon="svg-icon:icon" size="30" :is-theme="true"></CIcon>
-    <CIcon icon="ep:search" :size="30" color="var(--el-color-primary)" :is-theme="true"
-    hover-color="var(--el-color-info)" />
-    <div class="text p-1 m-1 ml-3 px-4"></div>
+    <!-- <theme></theme> -->
     <!-- <DialogTest /> -->
     <!-- <json-test /> -->
     <!-- <axis-test /> -->
