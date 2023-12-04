@@ -23,10 +23,10 @@ const props = withDefaults(defineProps<{
   isTheme: false
 })
 
-const isLocal = computed(() => props.icon.startsWith('svg-icon:'))
+const isLocal = computed(() => props.icon.startsWith('svg:'))
 
 const symbolId = computed(() => {
-  return unref(isLocal) ? `#icon-${props.icon.split('svg-icon:')[1]}` : props.icon
+  return unref(isLocal) ? `#icon-${props.icon.split('svg:')[1]}` : props.icon
 })
 
 const getIconifyStyle = computed(() => {

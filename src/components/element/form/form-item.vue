@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import { inject, computed, onMounted, getCurrentInstance, ref, nextTick } from 'vue'
 
 
 const props =
@@ -44,11 +45,16 @@ const props =
         inlineMessage: '',
         col: 1
     })
-import { inject, computed } from 'vue'
-
+let instance = null
 const col = inject<number>('col')
 const inline = inject('inline')
 const padding = inject('padding')
+
+onMounted(() => {
+    instance = getCurrentInstance()
+    console.log(instance.parent.devtoolsRawSetupState);
+
+})
 const width = computed(() => {
     if (props.width) {
         return props.width

@@ -61,9 +61,6 @@ const rules = reactive({
         { required: true, message: '格式错误', trigger: 'change' },
         { min: 2, max: 5, message: 'Length should be 4 to 5', trigger: 'change' },
     ],
-    sex: [
-        { required: true, message: '格式错误', trigger: 'change' },
-    ],
 })
 </script>
 
