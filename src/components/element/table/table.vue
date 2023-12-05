@@ -42,6 +42,10 @@ defineExpose({
     getData,
     // form
     validate: (...args: any[]) => form.value.validate(...args),
+    validateField: (...args: any[]) => form.value.validateField(...args),
+    resetFields: (...args: any[]) => form.value.resetFields(...args),
+    scrollToField: (...args: any[]) => form.value.scrollToField(...args),
+    clearValidate: (...args: any[]) => form.value.clearValidate(...args),
     // table
     clearSelection: (...args: any[]) => table.value.clearSelection(...args),
     getSelectionRows: (...args: any[]) => table.value.getSelectionRows(...args),

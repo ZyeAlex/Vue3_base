@@ -247,12 +247,17 @@ export default {
     });
     app.directive('required', {
       mounted(dom: Element, binding: DirectiveBinding, vnode: VNode) {
+        
         // 设置rules
         (vnode.ref as any).i.props.rules = new Rules()
-          .required()
-          .label((vnode.ref as any).i.props.label)
-          .getValue();
-
+        .required()
+        .label((vnode.ref as any).i.props.label)
+        .getValue();
+        // dom.setAttribute('rules', String(new Rules()
+        //   .required()
+        //   .label((vnode.ref as any).i.props.label)
+        //   .getValue()))
+        
         // 设置必填样式
         setRequiredStyle(dom);
       },

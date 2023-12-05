@@ -18,7 +18,11 @@ const form = ref()
 
 // 表单事件
 defineExpose({
-    validate: (...args: any[]) => form.value.validate(...args)
+    validate: (...args: any[]) => form.value.validate(...args),
+    validateField: (...args: any[]) => form.value.validateField(...args),
+    resetFields: (...args: any[]) => form.value.resetFields(...args),
+    scrollToField: (...args: any[]) => form.value.scrollToField(...args),
+    clearValidate: (...args: any[]) => form.value.clearValidate(...args),
 })
 
 // 注入数据
