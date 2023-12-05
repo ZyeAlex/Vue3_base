@@ -5,7 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-
+import UnoCSS from 'unocss/vite'
+import { presetAttributify, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   const root = process.cwd()
@@ -28,16 +29,36 @@ export default defineConfig(({ mode }) => {
   const config: UserConfigExport = {
     plugins: [
       vue(),
+      UnoCSS({
+        presets: [
+          presetUno(),
+          presetAttributify(),
+          presetIcons({
+            scale: 1.2,
+            warn: true,
+          }),
+        ],
+        shortcuts: {
+          frc: 'flex items-center justify-center',
+          fcc: 'flex flex-col items-center justify-center',
+          fcb: 'flex flex-col items-center justify-between',
+          frb: 'flex items-center justify-between',
+          fre: 'flex items-center justify-evenly',
+          full: 'w-full h-full',
+          cp: 'cursor-pointer',
+        },
+        transformers: [transformerDirectives(), transformerVariantGroup()],
+      }),
       createSvgIconsPlugin({
         iconDirs: [pathResolve('src/assets/svgs')],
         symbolId: 'icon-[dir]-[name]',
-        svgoOptions: true
-      })
+        svgoOptions: true,
+      }),
     ],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
     },
     css: {
       preprocessorOptions: {
@@ -45,10 +66,9 @@ export default defineConfig(({ mode }) => {
           // 引入全局变量文件
           additionalData: `
             @import '@/styles/theme/index.scss';
-            @import '@/styles/variables.scss';
             @import '@/styles/element/index.scss';
-          `
-        }
+          `,
+        },
       },
     },
     server: {
@@ -60,9 +80,9 @@ export default defineConfig(({ mode }) => {
           target: http('API'),
           ws: false,
           changeOrigin: false,
-        }
-      }
-    }
+        },
+      },
+    },
   }
   // element引入
   const fullImportElementPlus = () => {
@@ -71,10 +91,7 @@ export default defineConfig(({ mode }) => {
       transform(code, id) {
         if (id.includes('/src/main.ts')) {
           const prepend = `import ElementPlus from 'element-plus';import zhCn from 'element-plus/es/locale/lang/zh-cn';`
-          code = code.replace(
-            '.mount(',
-            ($1) => `.use(ElementPlus,{ locale: zhCn })` + $1
-          )
+          code = code.replace('.mount(', ($1) => `.use(ElementPlus,{ locale: zhCn })` + $1)
           return prepend + code
         }
         return code
@@ -91,6 +108,4 @@ export default defineConfig(({ mode }) => {
     config.plugins?.push(fullImportElementPlus())
   }
   return config
-}
-)
-
+})
