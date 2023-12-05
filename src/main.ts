@@ -10,10 +10,11 @@ import '@purge-icons/generated'
 
 import 'element-plus/dist/index.css'
 import '@/styles/index.scss'
-
+// nuocss
+import 'virtual:uno.css'
 // import '@/styles/theme/index.scss'
 const app = createApp(App)
-// pinia 
+// pinia
 app.use(createPinia())
 // 路由
 app.use(router)
