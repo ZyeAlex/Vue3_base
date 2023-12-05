@@ -10,9 +10,18 @@ http.interceptors.request.use((config: any) => {
 })
 
 // 响应
-http.interceptors.response.use((response: any) => {
-    const { data } = response
-    return data
-})
+http.interceptors.response.use(
+    (response: any) => {
+        const { data: { code, data, message } } = response
+        switch (code) {
+            case 200:
+                return data
+        }
+        return Promise.reject(message)
+    },
+    (reject: any) => {
+        return Promise.reject(reject)
+    }
+)
 
 export default http

@@ -7,7 +7,7 @@
  -->
 
 <script setup lang="ts">
-import { debounce } from "@/utils";
+import { debounce } from 'lodash';
 import { onMounted, ref, watch } from "vue";
 import { ArrowLeftBold, ArrowRightBold } from "@element-plus/icons-vue";
 import useChart from "./chart";

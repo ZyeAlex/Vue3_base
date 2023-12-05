@@ -8,11 +8,7 @@
 const xData = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 const y1Data = [2, 4, 6, 8, 3, 5, 7, 3, 7]
 const y2Data = [5, 8, 4, 7, 6, 6, 0, 2, 6]
-</script>
-
-<template>
-    <div class="container">
-        <c-axis :x-axis="xData" :series="[
+const series = [
             {
                 name: 'y1',
                 data: y1Data
@@ -21,7 +17,12 @@ const y2Data = [5, 8, 4, 7, 6, 6, 0, 2, 6]
                 type: 'line',
                 data: y2Data
             }
-        ]" />
+        ]
+</script>
+
+<template>
+    <div class="container">
+        <c-axis :x-axis="xData" :series="series" />
     </div>
 </template>
 

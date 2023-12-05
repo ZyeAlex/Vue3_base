@@ -11,8 +11,7 @@ const props =
 
         // 字典展示
         option?: any[]
-        optionLabel?: string
-        optionValue?: string
+        props?: { label: any, value: any }
 
 
 
@@ -39,8 +38,10 @@ const props =
         labelWidth: undefined,
 
         option: () => [],
-        optionLabel: 'label',
-        optionValue: 'value',
+        props: () => ({
+            label: 'label',
+            value: "value"
+        }),
 
         inlineMessage: '',
         col: 1
@@ -50,11 +51,7 @@ const col = inject<number>('col')
 const inline = inject('inline')
 const padding = inject('padding')
 
-onMounted(() => {
-    instance = getCurrentInstance()
-    console.log(instance.parent.devtoolsRawSetupState);
 
-})
 const width = computed(() => {
     if (props.width) {
         return props.width
@@ -101,29 +98,28 @@ const getKey = computed(() => {
         <!-- 下拉选择框 -->
         <el-select v-model="getModel[getKey]" style="width: 100%;" v-bind="$attrs" clearable v-else-if="type == 'select'"
             :style="style">
-            <el-option v-if="option && option.length" v-for="item in option" :key="item[optionValue]"
-                :label="item[optionLabel]" :value="item[optionValue]">
-            </el-option>
-            <slot></slot>
-        </el-select>
-        <!-- 选择器——单选 -->
-        <el-select v-model="getModel[getKey]" style="width: 100%;" v-bind="$attrs" multiple clearable
-            v-else-if="type == 'selects'">
-            <el-option v-if="option && option.length" v-for="item in option" :key="item[optionValue]"
-                :label="item[optionLabel]" :value="item[optionValue]">
+            <el-option v-if="option && option.length" v-for="item in option" :key="item[props.props.label]"
+                :label="item[props.props.label]" :value="item[props.props.value]">
             </el-option>
             <slot></slot>
         </el-select>
         <!-- 选择器——多选 -->
+        <el-select v-model="getModel[getKey]" style="width: 100%;" v-bind="$attrs" multiple clearable
+            v-else-if="type == 'selects'">
+            <el-option v-if="option && option.length" v-for="item in option" :key="item[props.props.value]"
+                :label="item[props.props.label]" :value="item[props.props.value]">
+            </el-option>
+            <slot></slot>
+        </el-select>
         <el-checkbox-group v-model="getModel[getKey]" v-bind="$attrs" v-else-if="type == 'checkbox'">
-            <el-checkbox v-for="item in option" :key="item[optionValue]" :label="item[optionLabel]"
-                :name="item[optionValue]" />
+            <el-checkbox v-for="item in option" :key="item[props.props.value]" :label="item[props.props.label]"
+                :name="item[props.props.value]" />
         </el-checkbox-group>
         <!-- 开关 -->
         <el-switch v-model="getModel[getKey]" v-bind="$attrs" v-else-if="type == 'switch'" />
         <!-- 单选框 -->
         <el-radio-group v-model="getModel[getKey]" v-bind="$attrs" v-else-if="type == 'radio'">
-            <el-radio v-for="item in option" :key="item[optionValue]" :label="item[optionLabel]" />
+            <el-radio v-for="item in option" :key="item[props.props.value]" :label="item[props.props.label]" />
         </el-radio-group>
         <!-- 原生 -->
         <template v-else-if="type == 'default'">

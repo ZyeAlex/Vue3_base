@@ -13,10 +13,13 @@ const props = withDefaults(
     defineProps<{
         data: object[]
         rules?: any
+        // 是否为position布局
+        position?: boolean
     }>(),
     {
         data: () => [],
-        rules: () => { }
+        rules: () => { },
+        position: false
     }
 )
 // 用于表单校验
@@ -65,13 +68,25 @@ defineExpose({
 </script>
 
 <template>
-    <Form ref="form" :model="data" :rules="rules">
-        <el-table ref="table" :data="props.data" v-bind="$attrs" inline>
-            <slot></slot>
-        </el-table>
+    <Form ref="form" :model="data" :rules="rules" :position="position">
+        <div :class="{ 'table-position': position }">
+            <el-table style="width:100%" height="100%" ref="table" :data="props.data" v-bind="$attrs" inline>
+                <slot></slot>
+            </el-table>
+        </div>
     </Form>
 </template>
 
 <style lang='scss' scoped>
-.container {}
+.table-position {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &>* {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+}
 </style>

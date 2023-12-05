@@ -16,8 +16,7 @@ const props = withDefaults(
 
         // 字典展示
         option?: any[]
-        optionLabel?: string
-        optionValue?: string
+        props?: { label: any, value: any }
 
 
         // 原生的属性
@@ -53,8 +52,11 @@ const props = withDefaults(
     {
         label: '',
         option: () => [],
-        optionLabel: 'label',
-        optionValue: 'value',
+        props: () => ({
+            label: 'label',
+            value: "value"
+        }),
+
         sortOrders: () => ['ascending', 'descending', null],
         resizable: true,
         showOverflowTooltip: undefined,
@@ -72,7 +74,7 @@ const rules = inject<any>('rules')
         <!-- input -->
         <template #default="{ row, $index }" v-if="formType">
             <FormItem :prop="'list.' + $index + '.' + prop" :rules="props.rules || rules[prop]" v-bind="$attrs"
-                :type="formType" :option="option" :option-label="optionLabel" :option-value="optionValue">
+                :type="formType" :option="option" :props="props.props">
             </FormItem>
         </template>
         <!-- 字典展示 -->

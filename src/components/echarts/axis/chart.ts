@@ -10,7 +10,8 @@ import { ref, Ref, watch } from 'vue'
 import { nextTick } from 'vue'
 import { ECharts } from 'echarts'
 import useStore from '@/store'
-import { Num, TinyColor } from '@/utils'
+import { floor } from 'lodash'
+import { TinyColor } from '@/utils'
 type o = {
   [key: string]: any
 }
@@ -166,7 +167,7 @@ export default function (props: any) {
       {
         axisLabel: {
           formatter: (value: number) => {
-            return Num(100 * value, 2) + '%'
+            return floor(100 * value, 2) + '%'
           },
         },
       },

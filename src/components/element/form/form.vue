@@ -7,11 +7,14 @@ const props = withDefaults(
         col?: number | string
         inline?: boolean
         padding?: string
+        // 是否为position布局
+        position?: boolean
     }>(),
     {
         col: 1,
         inline: false,
-        padding: '10px'
+        padding: '10px',
+        position: false
     }
 )
 const form = ref()
@@ -33,7 +36,7 @@ provide('padding', props.padding)
 </script>
 
 <template>
-    <el-form ref="form" inline :model="model">
+    <el-form ref="form" inline :model="model" :style="position && { height: '100%' }">
 
         <slot></slot>
 
